@@ -1,6 +1,8 @@
 # suy-mentions
+## contentEditable getSelection()
+### 可编辑dom 获取光标位置 实现方式 内容可以为任意dom元素
 
-A simple React mentions component.
+A simple React mentions component base on contentEditable
 
 ## Installation
 
