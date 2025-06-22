@@ -369,16 +369,16 @@ const MentionsEditor = forwardRef<MentionsRefType, MentionsEditorProps>(
         }
       }
       // 检测是否正在输入@后的内容
-      console.log('handleInput-text', text);
-      console.log(
-        'getLengthAfterLastAt:',
-        getLengthAfterLastAt(text, cursorPosition)
-      );
+      // console.log('handleInput-text', text);
+      // console.log(
+      //   'getLengthAfterLastAt:',
+      //   getLengthAfterLastAt(text, cursorPosition)
+      // );
       const atIndex = text.lastIndexOf('@');
-      console.log('cursorPosition', cursorPosition);
-      console.log('atIndex', atIndex);
+      // console.log('cursorPosition', cursorPosition);
+      // console.log('atIndex', atIndex);
       const searchKey = getSearchKey(text, cursorPosition);
-      console.log('searchKey', searchKey);
+      // console.log('searchKey', searchKey);
       if (searchKey) {
         setMentionSearch(searchKey);
         setShowMentions(true);
@@ -393,7 +393,6 @@ const MentionsEditor = forwardRef<MentionsRefType, MentionsEditorProps>(
       }
     }, [defaultMentions]);
     const toDetail = (id: string) => {
-      console.log('id', id);
       tagClick?.(id);
       // setSelectedUser(users.find((u) => u.id === id));
     };
@@ -445,7 +444,7 @@ const MentionsEditor = forwardRef<MentionsRefType, MentionsEditorProps>(
 
     // 插入提及
     const insertMention = (user: User) => {
-      console.log('insertMention-user', user);
+      // console.log('insertMention-user', user);
       const editor = editorRef.current;
       if (!editor) return;
 
@@ -458,11 +457,11 @@ const MentionsEditor = forwardRef<MentionsRefType, MentionsEditorProps>(
       }
 
       const text = editor.innerText || '';
-      console.log('insertMention', text);
-      console.log(
-        'getLengthAfterLastAt.length',
-        getLengthAfterLastAt(text, currentPosition)
-      );
+      // console.log('insertMention', text);
+      // console.log(
+      //   'getLengthAfterLastAt.length',
+      //   getLengthAfterLastAt(text, currentPosition)
+      // );
       // 检查插入提及后的文本长度是否超过最大限制
       const mentionText = `@${user.name}`;
       const AtTextLength = getLengthAfterLastAt(text, currentPosition);
@@ -472,12 +471,12 @@ const MentionsEditor = forwardRef<MentionsRefType, MentionsEditorProps>(
         mentionText +
         text.substring(currentPosition) +
         ' ';
-      console.log('newText', newText);
+      // console.log('newText', newText);
 
-      console.log('currentPosition', currentPosition);
-      console.log('前', text.substring(0, currentPosition - AtTextLength));
-      console.log('mentionText', mentionText);
-      console.log('后', text.substring(currentPosition));
+      // console.log('currentPosition', currentPosition);
+      // console.log('前', text.substring(0, currentPosition - AtTextLength));
+      // console.log('mentionText', mentionText);
+      // console.log('后', text.substring(currentPosition));
       if (newText.length > maxLength) {
         onErrors?.(1);
         return;
@@ -523,7 +522,7 @@ const MentionsEditor = forwardRef<MentionsRefType, MentionsEditorProps>(
           }
         }
       }
-      console.log('insertMention-atIndex-光标位置', atIndex);
+      // console.log('insertMention-atIndex-光标位置', atIndex);
       if (atIndex !== -1) {
         // 保存选区
         const selection = window.getSelection();
@@ -537,18 +536,18 @@ const MentionsEditor = forwardRef<MentionsRefType, MentionsEditorProps>(
         mention.textContent = `@${user.name}`;
 
         const cursorPosition = range.startOffset;
-        console.log('cursorPosition', cursorPosition);
-        // 替换@及其后内容
-        console.log(
-          'getLengthAfterLastAt(text)',
-          getLengthAfterLastAt(text, cursorPosition)
-        );
-        console.log('text', text);
-        console.log('atIndex', atIndex);
+        // console.log('cursorPosition', cursorPosition);
+        // // 替换@及其后内容
+        // console.log(
+        //   'getLengthAfterLastAt(text)',
+        //   getLengthAfterLastAt(text, cursorPosition)
+        // );
+        // console.log('text', text);
+        // console.log('atIndex', atIndex);
         const beforeText = text.substring(0, currentPosition - AtTextLength);
-        console.log('beforeText', beforeText);
+        // console.log('beforeText', beforeText);
         const afterText = text.substring(currentPosition);
-        console.log('afterText', afterText);
+        // console.log('afterText', afterText);
         // 重新设置内容
         editor.innerHTML = '';
         editor.appendChild(document.createTextNode(beforeText));
@@ -556,7 +555,7 @@ const MentionsEditor = forwardRef<MentionsRefType, MentionsEditorProps>(
         editor.appendChild(document.createTextNode(afterText + ' '));
 
         // 更新评论内容
-        console.log('editor.innerText', editor.innerText);
+        // console.log('editor.innerText', editor.innerText);
         const result = replaceMentionsWithSpans(editor.innerText);
         editor.innerHTML = result;
         const { text: text2, cursorPosition: cursorPosition2 } =

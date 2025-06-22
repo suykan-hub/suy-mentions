@@ -67,7 +67,7 @@ const Demo = () => {
           maxLength={20000}
           maxMentions={100}
           defaultMentions={['@张三', '@李四', '@王五', '@赵六']}
-          placeholder={{ text: '输入@来触发提及', color: '#666' }}
+          placeholder={{ text: '输入@来触发提及', color: 'red' }}
           tagClick={handleSelect}
           style={{ width: '100%', height: 'auto' }}
           value={value}
